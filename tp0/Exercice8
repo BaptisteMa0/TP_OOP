@@ -4,4 +4,7 @@ La  fonction ne vérifie pas s’il y a plusieurs capteurs identiques dans la li
 
 3. L'assistant IA a ajouté du code faisant un nouveau test unitaire, il couvre un cas prévu.
 
-4.
+5. L'assistant génére un message de commit plutôt précis sur les changements effectués.
+
+6. L'usage de l'assistant IA peut s'avérer utile dans l'étude des limites du codes, notamment pour des test qui n'ont pas été
+forcément réfléchis.
