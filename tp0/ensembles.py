@@ -1,23 +1,28 @@
-
+"""Exercice 4 - Ensembles"""
 #Question1
-def robots_double_mission(robots_exploration, robots_transport):
-    return (robots_exploration & robots_transport)
+def robots_double_mission(exploration, transport):
+    """Renvoie l'intersection des 2 ensembles"""
+    return exploration & transport
 
-def robots_toutes_missions(robots_exploration, robots_transport):
-    return (robots_exploration | robots_transport)
+def robots_toutes_missions(exploration, transport):
+    """Renvoie l'union des 2 ensembles"""
+    return exploration | transport
 
-def robots_exploration_seulement(robots_exploration, robots_transport):
-    return (robots_exploration - robots_transport)
+def robots_exploration_seulement(exploration, transport):
+    """Renvoie la valeur de robot_Explo qui n'est pas dans robot_transport"""
+    return exploration - transport
 
 
 #Question2
 def ajouter_robot_mission(rob, val):
+    """Ajoute une mission dans le robot rob"""
     ensemble = rob
     ensemble.add(val)
     return ensemble
 
 
 def retirer_robot_mission(rob, val):
+    """Retire une mission val dans le robot rob"""
     ensemble = set()
     for i in rob:
         if i!=val:
