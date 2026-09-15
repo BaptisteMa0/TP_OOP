@@ -1,11 +1,13 @@
-
+"""Exercice3 - Tuples"""
 #Question1
 def afficher_releve(capteur):
+    """Retourne les relevé d'un capteur"""
     return f"Capteur {capteur[0]} : {capteur[1]} {capteur[2]}"
 
 
 #QUestion2
 def recalibrer(releve,capteur,valeur):
+    """Change la valeur d'un capteur dans un releve par une valeur choisi"""
     for i in range(len(releve)):
         if releve[i][0] == capteur:
             nouveau_releve = list(releve[i])
