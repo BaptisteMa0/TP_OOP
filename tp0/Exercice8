@@ -1,0 +1,7 @@
+2. Fonction Recalibrer:
+La fonction ne fait rien si le capteur n’existe pas ; elle retourne simplement la liste inchangée. Cela peut être acceptable, mais il faudrait parfois signaler explicitement l’absence du capteur.
+La  fonction ne vérifie pas s’il y a plusieurs capteurs identiques dans la liste ; dans ce cas, elle mettrait à jour tous ceux qui correspondent.
+
+3. L'assistant IA a ajouté du code faisant un nouveau test unitaire, il couvre un cas prévu.
+
+4.

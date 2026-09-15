@@ -31,3 +31,10 @@ nouveaux_releves = recalibrer(releves, "laser_avant", 2.40)
 assert nouveaux_releves[0] == ("laser_avant", 2.40, "m")
 assert nouveaux_releves[1] == releve2
 assert nouveaux_releves[2] == releve3
+
+# Test unitaire supplémentaire IA
+releves_test = [releve1, releve2, releve3]
+releves_apres_calibration = recalibrer(releves_test, "gyroscope", 90.0)
+assert releves_apres_calibration[2] == ("gyroscope", 90.0, "deg")
+assert releves_apres_calibration[0] == releve1
+assert releves_apres_calibration[1] == releve2

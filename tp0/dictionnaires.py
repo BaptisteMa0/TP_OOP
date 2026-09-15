@@ -7,7 +7,8 @@ def quantite_piece(liste,modele,piece):
 #Question2
 def consommer_piece(liste,modele,piece,val):
     """retire la quantite d'une piece consommé selon un modele"""
-    liste[modele][piece] -= val
+    if (liste[modele][piece] > val):
+        liste[modele][piece] -= val
 
 def ajouter_modele(liste,nom,moteurs,capteurs,roues):
     """ajoute la quantite d'une piece consommé selon un modele"""
