@@ -1,7 +1,6 @@
 """Exercice 3 - Classe Habitant & Exercice 4 - Encapsulation"""
-from multipledispatch import dispatch
 from abc import ABC,abstractmethod
-
+from multipledispatch import dispatch
 
 
 class Habitant(ABC):
@@ -66,11 +65,7 @@ class Habitant(ABC):
     #Exercice 7
     @abstractmethod
     def calcul_nombre_annee_avant_retraite(self):
-        age_retraite = 62
-        if self.age >= age_retraite:
-            return "Déjà à la retraite"
-        else:
-            return age_retraite - self.age
+        pass
 
 #Exercice 6
 @dispatch(object,str)
@@ -96,23 +91,22 @@ class Adulte(Habitant):
         age_retraite = 62
         if self.age >= age_retraite:
             return "Déjà à la retraite"
-        else:
-            return age_retraite - self.age
+        return age_retraite - self.age
 
 
 class Enfant(Habitant):
     """Crée une classe dérivé d'Habitant représentant un enfant"""
     def __init__(self,nom,age,adresse,animaux=None):
-            if age < 18:
-                super().__init__(nom,age,adresse,animaux)
-            else:
-                raise ValueError("Un endant doit avoir moins de 18 ans")
+        if age < 18:
+            super().__init__(nom,age,adresse,animaux)
+        else:
+            raise ValueError("Un endant doit avoir moins de 18 ans")
 
     def calcul_nombre_annee_avant_retraite(self):
         return "enfant"
 
 #h1 = Habitant("Aldric", 25, "Rue A", {"vaches": 3})
-""" 
+"""
 #TESTS EXERCICE 3
 
 assert h1.nom == "Aldric"
