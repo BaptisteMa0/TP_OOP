@@ -34,3 +34,10 @@ autre_village.ajouter_habitant_agregation(elise) # meme habitant dans 2 villages
 assert len(pytown.get_habitants()) == 2
 assert elise in autre_village.get_habitants()
 pytown.afficher_habitants()
+
+"""
+La fonction ajouter_habitant_composition illustre une relation de composition car
+on observe bien que la clase village est composé d'une classe habitant, si on supprime
+La deuxième fonction illustre une agrégation car l'objet habitant Elise est indépendant
+du villageVoisin.
+"""
