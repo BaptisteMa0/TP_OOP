@@ -2,28 +2,57 @@
 class Habitant:
     """Classe Habitant reprenant son adresse, son age, son nom et ses animaux"""
     def __init__(self, nom, age, adresse, animaux=None):
-        self.nom = nom
-        self.age = age
-        self.adresse = adresse
+        self.__nom = nom
+        self.__age = age
+        self.__adresse = adresse
         if animaux is not None:
             self.animaux = animaux
         else:
             self.animaux = {}
 
+    #Accesseurs
+    def get_nom(self):
+        return self.__nom
+
+    def get_age(self):
+            return self.__age
+
+    def get_adresse(self):
+            return self.__adresse
+
+    def get_animaux(self):
+            return self.__animaux
+
+    #Mutateurs
+    def set_nom(self,nom):
+         self.__nom = nom
+
+    def set_age(self,age):
+         self.__age = age
+    
+    def set_adresse(self,adresse):
+         self.__adresse = adresse
+
+    def set_animaux(self,animaux):
+         self.__animaux = animaux
+
+    #méthodes
     def affichage_adresse(self):
         """Affiche l'adresse de l'habitant dans le terminal"""
-        print(f"{self.nom} habite a {self.adresse}")
+        print(f"{self.__nom} habite a {self.__adresse}")
 
     def compte_animal(self,animal):
         """Renvoie le nombre de "Animal" que l'habitant possede"""
-        if animal in self.animaux:
-            return self.animaux[animal]
+        if animal in self.__animaux:
+            return self.__animaux[animal]
         return 0
 
 
 h1 = Habitant("Aldric", 25, "Rue A", {"vaches": 3})
+""" TESTS EXERCICE 3
 
 assert h1.nom == "Aldric"
 assert h1.compte_animal("vaches") == 3
 assert h1.compte_animal("moutons") == 0
 h1.affichage_adresse() # affiche "Aldric habite a Rue A"
+"""
