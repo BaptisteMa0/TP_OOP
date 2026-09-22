@@ -165,3 +165,11 @@ except ValueError:
 
 affichage(adulte)
 affichage(enfant)
+
+"""
+Rendre la méthode abstraite oblige toutes les sous-classes concrètes de Habitant 
+à l'implémenter sous peine d'empêcher leur instanciation, 
+garantissant ainsi que n'importe quel objet manipulé par
+polymorphisme disposera effectivement d'une implémentation valide sans risquer
+de renvoyer None.
+"""
