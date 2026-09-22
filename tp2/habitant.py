@@ -84,6 +84,32 @@ def set_info(habitant,nom,age):
     habitant.set_nom(nom)
     habitant.set_age(age)
 
+class Adulte(Habitant):
+    """Crée une classe dérivé d'Habitant représentant un adulte"""
+    def __init__(self,nom,age,adresse,animaux=None):
+        if age >= 18:
+            super().__init__(nom,age,adresse,animaux)
+        else:
+            raise ValueError("Un adulte doit avoir plus de 18 ans")
+
+    def calcul_nombre_annee_avant_retraite(self):
+        age_retraite = 62
+        if self.age >= age_retraite:
+            return "Déjà à la retraite"
+        else:
+            return age_retraite - self.age
+
+
+class Enfant(Habitant):
+    """Crée une classe dérivé d'Habitant représentant un enfant"""
+    def __init__(self,nom,age,adresse,animaux=None):
+            if age < 18:
+                super().__init__(nom,age,adresse,animaux)
+            else:
+                raise ValueError("Un endant doit avoir moins de 18 ans")
+
+    def calcul_nombre_annee_avant_retraite(self):
+        return "enfant"
 
 #h1 = Habitant("Aldric", 25, "Rue A", {"vaches": 3})
 """ 
@@ -111,3 +137,22 @@ h2 = Habitant("Bob", 40, "Rue C")
 set_info(h2, "Robert") # met a jour le nom seulement
 set_info(h2, "Robert", 41) # met a jour le nom et l’age
 """
+
+# Adulte : leve une ValueError si age < 18
+# calcul_nombre_annee_avant_retraite() renvoie :
+# - "Deja a la retraite" si age >= 62
+# - 62 - age sinon
+# Enfant : leve une ValueError si age >= 18
+# calcul_nombre_annee_avant_retraite() renvoie toujours :
+# - "Erreur: un enfant ne peut pas calculer sa retraite"
+adulte = Adulte("Marie", 35, "Rue A")
+enfant = Enfant("Lucas", 12, "Rue B")
+assert isinstance(adulte, Habitant)
+assert adulte.calcul_nombre_annee_avant_retraite() == 27
+assert "enfant" in enfant.calcul_nombre_annee_avant_retraite()
+
+try:
+    Enfant("Oups", 25, "Rue C")
+    assert False, "une ValueError aurait du etre levee"
+except ValueError:
+    pass
