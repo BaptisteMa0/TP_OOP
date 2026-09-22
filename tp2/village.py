@@ -7,6 +7,10 @@ class Village:
         self.nom = nom
         self.habitants = []
 
+    def get_habitants(self):
+        """Renvoie la liste d'habitants dans le village"""
+        return self.habitants
+
     def ajouter_habitant_composition(self,nom,age,adresse, animaux =None):
         """Ajoute un habitant par composition"""
         self.habitants.append(Habitant(nom,age,adresse,animaux))
@@ -17,5 +21,16 @@ class Village:
 
     def afficher_habitants(self):
         """Affiche les habitants présent dans le village"""
-        print(self.habitants)
-        
+        for i in self.habitants:
+            print(i.get_nom())
+
+
+pytown = Village("PyTown")
+pytown.ajouter_habitant_composition("Aldric", 25, "Rue A", {"vaches": 3})
+elise = Habitant("Elise", 28, "Rue B", {"poules": 10})
+pytown.ajouter_habitant_agregation(elise)
+autre_village = Village("VillageVoisin")
+autre_village.ajouter_habitant_agregation(elise) # meme habitant dans 2 villages
+assert len(pytown.get_habitants()) == 2
+assert elise in autre_village.get_habitants()
+pytown.afficher_habitants()
