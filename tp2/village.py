@@ -1,5 +1,5 @@
 """Exercice 5 - Classe Village"""
-from habitant import Habitant
+from habitant import Habitant, Adulte, Enfant
 
 class Village:
     """Crée un Village initialisé par son nom"""
@@ -13,7 +13,11 @@ class Village:
 
     def ajouter_habitant_composition(self,nom,age,adresse, animaux =None):
         """Ajoute un habitant par composition"""
-        self.habitants.append(Habitant(nom,age,adresse,animaux))
+        if age < 18:
+            habitant = Enfant(nom, age, adresse, animaux)
+        else:
+            habitant = Adulte(nom, age, adresse, animaux)
+        self.habitants.append(habitant)
 
     def ajouter_habitant_agregation(self,habitant: Habitant):
         """Ajoute un habitant par agregation"""
@@ -24,7 +28,9 @@ class Village:
         for i in self.habitants:
             print(i.get_nom())
 
+        return [i.get_nom() for i in self.habitants]
 
+"""
 pytown = Village("PyTown")
 pytown.ajouter_habitant_composition("Aldric", 25, "Rue A", {"vaches": 3})
 elise = Habitant("Elise", 28, "Rue B", {"poules": 10})
@@ -34,7 +40,7 @@ autre_village.ajouter_habitant_agregation(elise) # meme habitant dans 2 villages
 assert len(pytown.get_habitants()) == 2
 assert elise in autre_village.get_habitants()
 pytown.afficher_habitants()
-
+"""
 """
 Question 3:
 La fonction ajouter_habitant_composition illustre une relation de composition car
