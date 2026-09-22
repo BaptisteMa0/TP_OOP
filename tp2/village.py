@@ -36,6 +36,7 @@ assert elise in autre_village.get_habitants()
 pytown.afficher_habitants()
 
 """
+Question 3:
 La fonction ajouter_habitant_composition illustre une relation de composition car
 on observe bien que la clase village est composé d'une classe habitant, si on supprime
 La deuxième fonction illustre une agrégation car l'objet habitant Elise est indépendant
