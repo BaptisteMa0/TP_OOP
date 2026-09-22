@@ -9,10 +9,7 @@ class Habitant(ABC):
         self.__nom = nom
         self.__age = age
         self.__adresse = adresse
-        if animaux is not None:
-            self.animaux = animaux
-        else:
-            self.animaux = {}
+        self.__animaux = dict(animaux) if animaux is not None else {}
 
     #Accesseurs
     def get_nom(self):
@@ -38,7 +35,7 @@ class Habitant(ABC):
         self.__adresse = adresse
 
     def set_animaux(self,animaux):
-        self.__animaux = animaux
+        self.__animaux = dict(animaux) if animaux is not None else {}
 
     @property
     def age(self):
