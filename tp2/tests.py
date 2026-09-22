@@ -1,8 +1,11 @@
+"""Exercice 9 - Tests unitaires"""
 import unittest
-from habitant import Habitant, Adulte, Enfant
+from habitant import Adulte, Enfant
 from village import Village
 
 h1 = Adulte("Aldric", 25, "Rue A", {"vaches": 3})
+h2 = Enfant("Marin", 12, "Rue W", {"cochons": 302})
+
 
 class TestHabitant(unittest.TestCase):
     """Tests pour la classe Habitant et l’encapsulation."""
@@ -28,7 +31,7 @@ class TestHabitant(unittest.TestCase):
         """Cas limite: animal non possédé"""
         resultat = h1.compte_animal("cochons")
         self.assertEqual(resultat,0)
-    
+
 class TestVillage(unittest.TestCase):
     """Tests pour la classe Village"""
     def test_composition(self):
@@ -50,7 +53,26 @@ class TestVillage(unittest.TestCase):
         ville1.ajouter_habitant_agregation(h1)
         ville2.ajouter_habitant_agregation(h1)
         self.assertEqual(ville2.get_habitants()[0].get_nom(),ville1.get_habitants()[0].get_nom())
-        
+
+class TestHeritage(unittest.TestCase):
+    """Tests pour le calcul de retraite et la création d'un enfant"""
+    def test_retraite_adulte(self):
+        """Cas Usuel"""
+        resultat = h1.calcul_nombre_annee_avant_retraite()
+        self.assertEqual(resultat,62-27)
+
+    def test_retraite_enfant(self):
+        """Cas limte: Calcul retraite pour un enfant"""
+        resultat = h2.calcul_nombre_annee_avant_retraite()
+        self.assertEqual(resultat,"enfant")
+
+    def test_enfant(self):
+        """Test de la création d'un enfant de plus de 18 ans"""
+        try:
+            Enfant("Jacques",32,"Rue du potimarron")
+            assert False, "une ValueError aurait du etre levee"
+        except ValueError:
+            pass
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
