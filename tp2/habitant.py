@@ -71,20 +71,8 @@ class Habitant(ABC):
     def __str__(self):
         return f"{self.__nom}, {self.__age} ans, habite à {self.__adresse}"
 
-#Exercice 6
-@dispatch(object,str)
-def set_info(habitant,nom):
-    """Surcharge pour str"""
-    habitant.set_nom(nom)
 
-@dispatch(object,str,int)
-def set_info(habitant,nom,age):
-    """Surcharge pour str et int"""
-    habitant.set_nom(nom)
-    habitant.set_age(age)
-
-
-
+#Exercice 7
 class Adulte(Habitant):
     """Crée une classe dérivé d'Habitant représentant un adulte"""
     def __init__(self,nom,age,adresse,animaux=None):
@@ -111,7 +99,23 @@ class Enfant(Habitant):
     def calcul_nombre_annee_avant_retraite(self):
         return "enfant"
     
-    
+#Exercice 6
+@dispatch(object,str)
+def set_info(habitant,nom):
+    """Surcharge pour str"""
+    habitant.set_nom(nom)
+
+@dispatch(object,str,int)
+def set_info(habitant,nom,age):
+    """Surcharge pour str et int"""
+    habitant.set_nom(nom)
+    habitant.set_age(age)
+
+#Exercice 8
+def affichage(h: Habitant):
+    """Affiche un habitant en utilisant str(h)"""
+    print(h)
+
 
 #h1 = Habitant("Aldric", 25, "Rue A", {"vaches": 3})
 """
@@ -159,5 +163,5 @@ try:
 except ValueError:
     pass
 
-print(adulte)
-print(enfant)
+affichage(adulte)
+affichage(enfant)
