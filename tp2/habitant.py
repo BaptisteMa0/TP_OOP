@@ -1,4 +1,7 @@
 """Exercice 3 - Classe Habitant & Exercice 4 - Encapsulation"""
+from multipledispatch import dispatch
+
+
 class Habitant:
     """Classe Habitant reprenant son adresse, son age, son nom et ses animaux"""
     def __init__(self, nom, age, adresse, animaux=None):
@@ -58,6 +61,19 @@ class Habitant:
             return self.__animaux[animal]
         return 0
 
+#Exercice 6
+@dispatch(object,str)
+def set_info(habitant,nom):
+    """Surcharge pour str"""
+    habitant.set_nom(nom)
+
+@dispatch(object,str,int)
+def set_info(habitant,nom,age):
+    """Surcharge pour str et int"""
+    habitant.set_nom(nom)
+    habitant.set_age(age)
+
+
 h1 = Habitant("Aldric", 25, "Rue A", {"vaches": 3})
 """ TESTS EXERCICE 3
 
@@ -74,3 +90,11 @@ try:
     assert False, "une ValueError aurait du etre levee"
 except ValueError:
     pass
+
+
+
+#Exercice 6
+
+h2 = Habitant("Bob", 40, "Rue C")
+set_info(h2, "Robert") # met a jour le nom seulement
+set_info(h2, "Robert", 41) # met a jour le nom et l’age
